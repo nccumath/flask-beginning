@@ -18,8 +18,8 @@ def hello_many():
 
 @app.route("/hi")
 def hi():
-    name = request.args.get("name", "Jim")
-    return "Hi, %s" % name
+    name = request.args.get("name", "Someone")
+    return render_template("hi.html", name=name)
 
 
 @app.route("/my_dict")
