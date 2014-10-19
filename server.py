@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from flask import render_template
 
 app = Flask("todo-list")
 app.debug = True # Enable debug mode
@@ -8,6 +9,11 @@ app.debug = True # Enable debug mode
 @app.route("/")
 def hello():
     return "Hello, World!"
+
+
+@app.route("/hello")
+def hello_many():
+    return render_template("hello.txt")
 
 
 @app.route("/hi")
