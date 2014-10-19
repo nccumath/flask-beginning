@@ -8,7 +8,7 @@ app.debug = True # Enable debug mode
 
 @app.route("/")
 def hello():
-    return "Hello, World!"
+    return render_template("index.html")
 
 
 @app.route("/hello")
