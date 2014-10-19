@@ -10,7 +10,12 @@
     <body>
         <ol>
             {% for i in range(my_todo_list|length) %}
-            <li>{{ my_todo_list[i] }}</li>
+            <li>{{ my_todo_list[i] }}
+                <form action="/todo_delete" method="POST">
+                    <input type="hidden" name="todo_id" value="{{i}}">
+                    <input type="submit" value="Delete">
+                </form>
+            </li>
             {% endfor %}
         </ol>
 

@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 from flask import render_template
+from flask import redirect, url_for
 
 
 app = Flask("todo-list")
@@ -99,6 +100,15 @@ def todo_list():
 
     return render_template("todo_list.html",
                            my_todo_list=my_todo_list)
+
+
+@app.route("/todo_delete", methods=["POST"])
+def todo_delete():
+
+    new_todo = request.form.get("todo_id")
+    my_todo_list.pop(int(new_todo))
+
+    return redirect(url_for('todo_list'))
 
 
 if __name__ == "__main__":
