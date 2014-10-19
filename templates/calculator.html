@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /* Some CSS style */
+        </style>
+        <script>
+            // Some javascript scripts
+        </script>
+    </head>
+    <body>
+        <form action="/calculator" method="POST">
+            <input type="text" name="var_a" value="{{ var_a }}">
+            +
+            <input type="text" name="var_b" value="{{ var_b }}">
+            <input type="submit" value="=">
+            <input type="text" value="{{ calc_sum }}" readonly>
+        </form>
+    </body>
+</html>

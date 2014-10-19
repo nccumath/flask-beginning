@@ -48,6 +48,21 @@ def whoareyou():
         return render_template("form.html")
 
 
+@app.route("/calculator", methods=["GET", "POST"])
+def calculator():
+    if request.method == "POST":
+        var_a = request.form.get("var_a")
+        var_b = request.form.get("var_b")
+        calc_sum = int(var_a) + int(var_b)
+        return render_template("calculator.html",
+                               var_a=var_a,
+                               var_b=var_b,
+                               calc_sum=calc_sum)
+
+    if request.method == "GET":
+        return render_template("calculator.html")
+
+
 @app.route("/my_dict")
 def my_dict():
 
