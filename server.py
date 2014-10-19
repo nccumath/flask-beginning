@@ -51,10 +51,8 @@ def my_dict():
 
     q = request.args.get("q", None)
 
-    if q in dictionary:
-        return dictionary[q]
-    else:
-        return "Not found"
+    return render_template("dictionary.html",
+                           q=q, dictionary=dictionary)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")

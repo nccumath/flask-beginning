@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <style>
+            /* Some CSS style */
+        </style>
+        <script>
+            // Some javascript scripts
+        </script>
+    </head>
+    <body>
+
+        {% if q in dictionary %}
+        <p>{{ dictionary[q] }}</p>
+        {% else %}
+        <p>Not found</p>
+        {% endif %}
+    </body>
+</html>
