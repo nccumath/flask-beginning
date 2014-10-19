@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /* Some CSS style */
+        </style>
+        <script>
+            // Some javascript scripts
+        </script>
+    </head>
+    <body>
+        <p>{% if name %} Hi, {{ name }}. Welcome to my App. {% endif %}</p>
+
+        <form action="/whoareyou" method="POST">
+            <label for=""> Name:
+                <input type="text" name="name" value="">
+            </label>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

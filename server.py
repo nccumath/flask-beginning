@@ -38,6 +38,16 @@ def favorite_food():
                            my_favorite_food=my_favorite_food)
 
 
+@app.route("/whoareyou", methods=["GET", "POST"])
+def whoareyou():
+    if request.method == "POST":
+        name = request.form.get("name")
+        return render_template("form.html", name=name)
+
+    if request.method == "GET":
+        return render_template("form.html")
+
+
 @app.route("/my_dict")
 def my_dict():
 
