@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <style>
+            /* Some CSS style */
+        </style>
+        <script>
+            // Some javascript scripts
+        </script>
+    </head>
+    <body>
+        {% if is_public %}
+        <p>My favorite foods are:</p>
+        <ul>
+            {% for food in my_favorite_food %}
+            <li>{{ food }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>My favorite foods is a secret.</p>
+        {% endif %}
+    </body>
+</html>

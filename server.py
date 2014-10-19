@@ -22,6 +22,22 @@ def hi():
     return render_template("hi.html", name=name)
 
 
+@app.route("/favorite_food")
+def favorite_food():
+
+    is_public = request.args.get("is_public", False)
+
+    my_favorite_food = [
+        "steak",
+        "fried chicken",
+        "hamburger"
+    ]
+
+    return render_template("favorite_food.html",
+                           is_public=is_public,
+                           my_favorite_food=my_favorite_food)
+
+
 @app.route("/my_dict")
 def my_dict():
 
