@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <style>
+            /* Some CSS style */
+        </style>
+        <script>
+            // Some javascript scripts
+        </script>
+    </head>
+    <body>
+        <ol>
+            {% for i in range(my_todo_list|length) %}
+            <li>{{ my_todo_list[i] }}</li>
+            {% endfor %}
+        </ol>
+
+        <form action="/todo_list" method="POST">
+            <input type="text" name="new_todo">
+            <input type="submit" value="Add Todo">
+        </form>
+    </body>
+</html>

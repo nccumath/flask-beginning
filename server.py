@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask import render_template
 
+
 app = Flask("todo-list")
 app.debug = True # Enable debug mode
 
@@ -78,6 +79,27 @@ def my_dict():
 
     return render_template("dictionary.html",
                            q=q, dictionary=dictionary)
+
+
+my_todo_list = [
+    "Setup environment",
+    "Create account"
+]
+
+
+@app.route("/todo_list", methods=["GET", "POST"])
+def todo_list():
+
+    if request.method == "POST":
+        new_todo = request.form.get("new_todo")
+        if new_todo:
+            my_todo_list.append(new_todo)
+
+        print my_todo_list
+
+    return render_template("todo_list.html",
+                           my_todo_list=my_todo_list)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
