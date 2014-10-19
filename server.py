@@ -82,10 +82,21 @@ def my_dict():
                            q=q, dictionary=dictionary)
 
 
-my_todo_list = [
-    "Setup environment",
-    "Create account"
-]
+import os
+import pickle
+
+if os.path.exists("my_todo_list.txt"):
+    f = open("my_todo_list.txt", "r")
+    my_todo_list = pickle.load(f) or []
+    f.close()
+else:
+    my_todo_list = []
+
+
+def update_todo_list():
+    f = open("my_todo_list.txt", "w")
+    pickle.dump(my_todo_list, f)
+    f.close()
 
 
 @app.route("/todo_list", methods=["GET", "POST"])
@@ -95,8 +106,7 @@ def todo_list():
         new_todo = request.form.get("new_todo")
         if new_todo:
             my_todo_list.append(new_todo)
-
-        print my_todo_list
+            update_todo_list()
 
     return render_template("todo_list.html",
                            my_todo_list=my_todo_list)
@@ -105,8 +115,10 @@ def todo_list():
 @app.route("/todo_delete", methods=["POST"])
 def todo_delete():
 
-    new_todo = request.form.get("todo_id")
-    my_todo_list.pop(int(new_todo))
+    todo_id = request.form.get("todo_id")
+    if todo_id:
+        my_todo_list.pop(int(todo_id))
+        update_todo_list()
 
     return redirect(url_for('todo_list'))
 
